@@ -1,0 +1,230 @@
+[
+    { "id":"d137868f-5ed8-4960-b5c7-182ff89fc446",
+      "videoUrl":"https://thisurldoesnotactuallyexist.totallynotreal/d137868f-5ed8-4960-b5c7-182ff89fc446",
+      "videoTitle":"Learn: Places",
+      "tags":["Easy"],
+      "teacherName":"Jane",
+      "teacherId":"10bfe35a-c777-437a-867b-0963860a2cfa",
+      "averageUserRating":0.5458206617440222
+    },
+    { "id":"4f99907f-047e-40c0-bb7c-a002c256fb36",
+      "videoUrl":"https://thisurldoesnotactuallyexist.totallynotreal/4f99907f-047e-40c0-bb7c-a002c256fb36",
+      "videoTitle":"Story: Animals",
+      "tags":["Calming","Energetic","Easy"],
+      "teacherName":"Monica",
+      "teacherId":"8a44b04b-aa57-4d92-b91b-0b091b31366e",
+      "averageUserRating":0.9009146212755315},
+      {
+        "id": "23522b50-c936-4647-870a-350dfbebc078",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/23522b50-c936-4647-870a-350dfbebc078",
+        "videoTitle": "Story: School",
+        "tags": [
+          "Engaging",
+          "Calming",
+          "Exciting",
+          "Moving",
+          "Energetic"
+        ],
+        "teacherName": "Graham",
+        "teacherId": "31eafe4b-a01c-4de0-96e6-5ab2c5d76149",
+        "averageUserRating": 0.6937727841368944
+      },
+      {
+        "id": "c7d7f384-83db-4d68-938b-443f194cda17",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/c7d7f384-83db-4d68-938b-443f194cda17",
+        "videoTitle": "Activity: School",
+        "tags": [
+          "Energetic",
+          "Interactive",
+          "Exciting",
+          "Hard"
+        ],
+        "teacherName": "Alice",
+        "teacherId": "a0d38c0e-6214-4e6e-a5d4-8e3799ae8259",
+        "averageUserRating": 0.9937216535254181
+      },
+      {
+        "id": "855ea944-0334-498a-a5ec-41ff9f0afb63",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/855ea944-0334-498a-a5ec-41ff9f0afb63",
+        "videoTitle": "Practice: Food",
+        "tags": [
+          "Moving"
+        ],
+        "teacherName": "Lee",
+        "teacherId": "b78b63c7-d924-4bb1-b4cd-490add4b0c41",
+        "averageUserRating": 0.7047601049005705
+      },
+      {
+        "id": "380c07a1-1dff-48db-b583-8669a6129cb6",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/380c07a1-1dff-48db-b583-8669a6129cb6",
+        "videoTitle": "Practice: School",
+        "tags": [
+          "Medium",
+          "Exciting",
+          "Exploring",
+          "Passive"
+        ],
+        "teacherName": "Trevor",
+        "teacherId": "5a48d52f-7559-4540-bb6c-97aade16e31d",
+        "averageUserRating": 0.802226705490191
+      },
+      {
+        "id": "7f36d281-0c0e-4ad0-bdb2-e0a61caaf411",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/7f36d281-0c0e-4ad0-bdb2-e0a61caaf411",
+        "videoTitle": "Learn: Sports",
+        "tags": [
+          "Moving",
+          "Hard"
+        ],
+        "teacherName": "Charlie",
+        "teacherId": "a6cbae1b-f0e5-485f-86b5-2e1c2b21e374",
+        "averageUserRating": 0.3395966696685151
+      },
+      {
+        "id": "6c99390b-6fc2-49aa-b8a3-4ce246261636",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/6c99390b-6fc2-49aa-b8a3-4ce246261636",
+        "videoTitle": "Activity: School",
+        "tags": [
+          "Exploring"
+        ],
+        "teacherName": "Verity",
+        "teacherId": "6a0ccdce-7eac-4e1a-ae2c-bec1ad7d5206",
+        "averageUserRating": 0.47571736892447847
+      },
+      {
+        "id": "7c250a2a-51a6-4c88-bcb8-8deb7ebd563f",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/7c250a2a-51a6-4c88-bcb8-8deb7ebd563f",
+        "videoTitle": "Learn: School",
+        "tags": [
+          "Engaging",
+          "Interactive"
+        ],
+        "teacherName": "Eve",
+        "teacherId": "6292dbc3-620f-4d0a-85da-558023dad543",
+        "averageUserRating": 0.8798415548959668
+      },
+      {
+        "id": "23522b50-c936-4647-870a-350dfbebc078",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/23522b50-c936-4647-870a-350dfbebc078",
+        "videoTitle": "Story: School",
+        "tags": [
+          "Engaging",
+          "Calming",
+          "Exciting",
+          "Moving",
+          "Energetic"
+        ],
+        "teacherName": "Graham",
+        "teacherId": "31eafe4b-a01c-4de0-96e6-5ab2c5d76149",
+        "averageUserRating": 0.6937727841368944
+      },
+      {
+        "id": "c7d7f384-83db-4d68-938b-443f194cda17",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/c7d7f384-83db-4d68-938b-443f194cda17",
+        "videoTitle": "Activity: School",
+        "tags": [
+          "Energetic",
+          "Interactive",
+          "Exciting",
+          "Hard"
+        ],
+        "teacherName": "Alice",
+        "teacherId": "a0d38c0e-6214-4e6e-a5d4-8e3799ae8259",
+        "averageUserRating": 0.9937216535254181
+      },
+      {
+        "id": "855ea944-0334-498a-a5ec-41ff9f0afb63",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/855ea944-0334-498a-a5ec-41ff9f0afb63",
+        "videoTitle": "Practice: Food",
+        "tags": [
+          "Moving"
+        ],
+        "teacherName": "Lee",
+        "teacherId": "b78b63c7-d924-4bb1-b4cd-490add4b0c41",
+        "averageUserRating": 0.7047601049005705
+      },
+      {
+        "id": "380c07a1-1dff-48db-b583-8669a6129cb6",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/380c07a1-1dff-48db-b583-8669a6129cb6",
+        "videoTitle": "Practice: School",
+        "tags": [
+          "Medium",
+          "Exciting",
+          "Exploring",
+          "Passive"
+        ],
+        "teacherName": "Trevor",
+        "teacherId": "5a48d52f-7559-4540-bb6c-97aade16e31d",
+        "averageUserRating": 0.802226705490191
+      },
+      {
+        "id": "7f36d281-0c0e-4ad0-bdb2-e0a61caaf411",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/7f36d281-0c0e-4ad0-bdb2-e0a61caaf411",
+        "videoTitle": "Learn: Sports",
+        "tags": [
+          "Moving",
+          "Hard"
+        ],
+        "teacherName": "Charlie",
+        "teacherId": "a6cbae1b-f0e5-485f-86b5-2e1c2b21e374",
+        "averageUserRating": 0.3395966696685151
+      },
+      {
+        "id": "6c99390b-6fc2-49aa-b8a3-4ce246261636",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/6c99390b-6fc2-49aa-b8a3-4ce246261636",
+        "videoTitle": "Activity: School",
+        "tags": [
+          "Exploring"
+        ],
+        "teacherName": "Verity",
+        "teacherId": "6a0ccdce-7eac-4e1a-ae2c-bec1ad7d5206",
+        "averageUserRating": 0.47571736892447847
+      },
+      {
+        "id": "7c250a2a-51a6-4c88-bcb8-8deb7ebd563f",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/7c250a2a-51a6-4c88-bcb8-8deb7ebd563f",
+        "videoTitle": "Learn: School",
+        "tags": [
+          "Engaging",
+          "Interactive"
+        ],
+        "teacherName": "Eve",
+        "teacherId": "6292dbc3-620f-4d0a-85da-558023dad543",
+        "averageUserRating": 0.8798415548959668
+      },
+      {
+        "id": "b1420dfe-d1c2-493f-925f-f23c81c28109",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/b1420dfe-d1c2-493f-925f-f23c81c28109",
+        "videoTitle": "Learn: School",
+        "tags": [
+          "Easy",
+          "Engaging"
+        ],
+        "teacherName": "Bob",
+        "teacherId": "44e3d7eb-aa21-4170-a48e-c39ecfa6d077",
+        "averageUserRating": 0.004003148283095115
+      },
+      {
+        "id": "2328f3b9-f2ae-4759-ac11-15c077234504",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/2328f3b9-f2ae-4759-ac11-15c077234504",
+        "videoTitle": "Activity: Work",
+        "tags": [
+          "Exciting",
+          "Engaging"
+        ],
+        "teacherName": "Verity",
+        "teacherId": "6a0ccdce-7eac-4e1a-ae2c-bec1ad7d5206",
+        "averageUserRating": 0.9348546877580888
+      },
+      {
+        "id": "c3bfa21a-57e7-4755-915d-5465cb94a6f5",
+        "videoUrl": "https://thisurldoesnotactuallyexist.totallynotreal/c3bfa21a-57e7-4755-915d-5465cb94a6f5",
+        "videoTitle": "Challenge: Places",
+        "tags": [
+          "Moving"
+        ],
+        "teacherName": "Graham",
+        "teacherId": "31eafe4b-a01c-4de0-96e6-5ab2c5d76149",
+        "averageUserRating": 0.8108369287017494
+      }
+]

@@ -1,0 +1,13 @@
+[core]
+	bare = true
+	repositoryformatversion = 0
+	filemode = false
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/AlbertoConcovia/tutorialsLingumi.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "GITHUB"]
+	url = https://AlbertoConcovia:Chatruk_2011@github.com/AlbertoConcovia/tutorialsLingumi.git
+	fetch = +refs/heads/*:refs/remotes/GITHUB/*
+	tagopt = --no-tags
