@@ -7,7 +7,7 @@ const {
     getAll,
     getTopRatedForTags,
     searchForTutorials,
-} = require("../core/tutorialService");
+} = require("../tutorialsCore/tutorialService");
 
 const emptyVideoList = [];
 

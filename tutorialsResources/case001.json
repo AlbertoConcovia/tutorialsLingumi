@@ -1,0 +1,19 @@
+[
+    { "id":"d137868f-5ed8-4960-b5c7-182ff89fc446",
+      "videoUrl":"https://thisurldoesnotactuallyexist.totallynotreal/d137868f-5ed8-4960-b5c7-182ff89fc446",
+      "videoTitle":"Learn: Places",
+      "tags":["Easy"],
+      "teacherName":"Jane",
+      "teacherId":"10bfe35a-c777-437a-867b-0963860a2cfa",
+      "averageUserRating":0.5458206617440222
+    },
+    { "id":"4f99907f-047e-40c0-bb7c-a002c256fb36",
+      "videoUrl":"http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+      "videoTitle":"Story: Animals",
+      "tags":["Calming","Energetic","Easy"],
+      "teacherName":"Monica",
+      "teacherId":"8a44b04b-aa57-4d92-b91b-0b091b31366e",
+      "averageUserRating":0.9009146212755315}
+  
+
+]

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchVideoTutorialsData, API } from '../webservices/videoTutorialsService';
+import { fetchVideoTutorialsData, API } from '../tutorialsWebservices/videoTutorialsService';
 /**
  * @aconcovia
  * Unit Test for call get of Ligumi webservice using mock implementation
