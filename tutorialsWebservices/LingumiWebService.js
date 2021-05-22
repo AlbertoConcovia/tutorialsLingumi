@@ -7,4 +7,3 @@ export const fetchVideoTutorialsData = async query => {
   return await axios.get(url);
 };
  
-fetchVideoTutorialsData('react');
