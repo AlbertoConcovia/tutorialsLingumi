@@ -21,6 +21,7 @@ const App = () => {
 
    return (
       
+          
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Login" >
               <Stack.Screen name="Login" component={Login} options={{
@@ -28,7 +29,7 @@ const App = () => {
               <Stack.Screen name="Tutorials"
               component={TutorialsList}
               options={{
-                title: 'Tutorials Page',
+                title: 'Video Tutorials',
                 headerStyle: {
                   backgroundColor: '#E5E530',
                 },

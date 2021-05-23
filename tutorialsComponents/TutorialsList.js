@@ -1,4 +1,5 @@
 /**
+ * @aconcovia
  * Tutorial List component
  * Show list of video tutorials 
  * Show a input search to the user
@@ -10,12 +11,13 @@
  */
 
 import React , { useState , useEffect }  from 'react';
-import { StatusBar, StyleSheet, Text, View, FlatList, TouchableOpacity,TextInput} from 'react-native';
+import { StatusBar, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import  Video from "react-native-video";
-import SelectMultiple from 'react-native-select-multiple'
+import SelectBox from 'react-native-multi-selectbox';
 import axios from 'axios';
-import { Button} from 'react-native-elements';
-
+import { Button, SearchBar  } from 'react-native-elements';
+import { xorBy } from 'lodash';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const {
   getTopRatedForTags,
@@ -58,16 +60,27 @@ const {
     );
   
     const [selectedTags, setSelectedTags] = useState([]);
- 
+    const [selectedTag, setSelectedTag] = useState({})
+    
+
     const [videoList, setVideoList]  = useState([]);
 
     const [videoListFiltered, setVideoListFiltered]  = useState([]);
 
     const [uniqueTags, setUniqueTags] = useState([]);
+
+    const [uniqueMultipleTags, setUniqueMultipleTags] = useState([]);
  
     const [words, setWords] = useState('');
  
-    
+
+    const onMultiChange = (selectedTags) => {
+     
+      return (item) => setSelectedTags(xorBy(selectedTags, [item], 'id'))
+    }
+  
+   
+
     const onSelectionsChange = (selectedTags) => {
    
      setSelectedTags(selectedTags);
@@ -76,7 +89,7 @@ const {
     //filter videos according tags selected
     const handleFilterByTags = () => {
         // selectedTags is array of { label, value } and I need only array of string
-        let tags =  selectedTags.map(s => s.value);
+        let tags =  selectedTags.map(s => s.id);
         if(tags.length>0){
            let listVideos = videoList;
            setVideoListFiltered(getTopRatedForTags(listVideos,tags));
@@ -87,11 +100,14 @@ const {
  
 
     //match videos with the entered words
-    const handleFilterByKeyWords = () => {
-        let userwords = words.split(' ');
+    const handleFilterByKeyWords = (wordstr) => {
+        
+        let userwords = wordstr.split(' ');
         let listVideos = videoList;
+        
         setVideoListFiltered(searchForTutorials(listVideos,userwords));   
         setSelectedTags([]);
+        setWords(wordstr);
     }
  
     /*call to Lingumi Service and save videos, videos to visualize 
@@ -103,9 +119,14 @@ const {
         let listvideos= res.data;
         let listtags = listvideos.map(v => v.tags);
         let uniqueTags = [...new Set(listtags.map(a => a.toString()).toString().split(','))];
+        
+        //component SelectBox needs objects with { item: , id: }
+        let uniqueMultipleTags = uniqueTags.map( t => JSON.parse( '{ "item": "'.concat(t).concat('", "id": "').concat(t).concat('" }')));
+
         setVideoList(listvideos);
         setVideoListFiltered(listvideos);
         setUniqueTags(uniqueTags);
+        setUniqueMultipleTags(uniqueMultipleTags);
         setWords('');
         setSelectedTags([]);
     };
@@ -120,55 +141,54 @@ const {
          <View>
             
            <View>
-             <TextInput style={{ height: 80,
-                         borderColor: 'gray',
-                         borderWidth: 1,
-                         
-                         }}
-                     defaultValue={words}
-                     onChangeText={setWords}
-                     placeholder="Enter key words to filter: teacher, tittle, tags" 
-                     
-             />  
-             <Button style={{ height: 10,with:5,
-                         backgroundColor: 'grey',
-                         borderWidth: 1,
-                        
-                         }}
-                 title="Search Tutorials"
-                 onPress={handleFilterByKeyWords}
-             />
+   
+            <SearchBar
+              placeholder="Enter key words to filter: teacher, tittle, tags"
+              onChangeText={e => handleFilterByKeyWords(e)}
+              value={words}
+              showLoading={true}
+              
+            />
+            
  
            </View>
-           <View>     
-             <SelectMultiple
-                 items={uniqueTags}
-                 selectedItems={selectedTags}
-                 onSelectionsChange={onSelectionsChange} 
-                 style={{ height: 200,
-                     borderColor: 'gray',
-                     borderWidth: 1,
-                     
-                     }}            
-                 />
+           <View style={styles.separator}>     
+           
+           <SelectBox
+            label="Get Top Rated For Tags"
+            options={uniqueMultipleTags}
+            selectedValues={selectedTags}
+            onMultiSelect={onMultiChange()}
+            onTapClose={onMultiChange()}
+            isMulti
+          />
+
+      
+           
        
-            <Button style={{ height: 10,with:5,
-                         backgroundColor: 'grey',
-                         borderWidth: 1,
-                        
-                         }}
+            <Button style={styles.input}
                  title="Get Top Rated For Tags"
                  onPress={handleFilterByTags}
+                 
              />
           </View>
-           <View>
-            <Button style={styles.btntext}
-                 title="Refresh"
-                 type="clear"
+           <View  style={styles.separator}>
+           
+              
+            <Button style={styles.btntxt}
+                 title="Reload complete List"
                  onPress={uponload}
-            />
-
-             <FlatList
+                 icon={
+                    <Icon
+                      name="reload"
+                      size={15}
+                      color="grey"
+                    />
+                  }
+                 
+             />
+            
+            <FlatList
                  data={videoListFiltered}
                  renderItem={renderItem}
                  keyExtractor={item => item.id}
@@ -188,9 +208,11 @@ const {
   const styles = StyleSheet.create({
    
     btntxt: {
-      fontSize: 25,
-      textAlign: 'center',
-      fontWeight: 'bold',
+      backgroundColor: '#00FF00',
+      padding: 10,
+      width: '45%',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   
     btn: {
@@ -203,7 +225,7 @@ const {
 
     container: {
       flex: 1,
-      backgroundColor: '#9e2dd6',
+      backgroundColor: '#E5E530',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -238,15 +260,35 @@ const {
       flex: 1,
       marginTop: StatusBar.currentHeight || 8,
     },
+
     item: {
       backgroundColor: '#9e2dd6',
       padding: 20,
       marginVertical: 8,
       marginHorizontal: 16,
     },
+
     title: {
       fontSize: 32,
     },
+
+    input: {
+      backgroundColor:'#fff',
+      width:10,
+      margin: 1,
+      width: '90%',
+      padding: 50, 
+    },
+  
+   
+  
+    separator: {
+     
+      padding: 20,
+      marginVertical: 8,
+      marginHorizontal: 16,
+    },
+
   });
   
   export default TutorialsList;

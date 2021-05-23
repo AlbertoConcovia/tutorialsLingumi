@@ -1,6 +1,7 @@
 import React , { useState , useEffect }  from 'react';
 import { StyleSheet, Text, View, Dimensions, TextInput, Button, TouchableOpacity, StatusBar } from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input } from 'react-native-elements';
 
 
 const Login = ({ navigation }) => {
@@ -18,17 +19,34 @@ const Login = ({ navigation }) => {
         <Text style={styles.welcome}>Welcome to Lingumi Tutorials</Text>
         <Text style={styles.logintext}>Please Login to watch your videos!</Text>
 
-        <TextInput 
-            placeholder="enter email" 
-            style={styles.input}
-            onChangeText={setUsername} 
-        />
-        <TextInput 
-            placeholder="enter password" 
-            style={styles.input} 
-            secureTextEntry 
-            onChangeText={setPassword} 
+        <Input
+          placeholder='enter email'
+          leftIcon={
+            <Icon
+              name='user'
+              size={15}
+              color='grey'
             />
+          }
+          style={styles.input}
+          onChangeText={setUsername} 
+        />
+
+        <Input
+          placeholder='enter password'
+          leftIcon={
+            <Icon
+              name='lock'
+              size={15}
+              color='grey'
+            />
+          }
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={setPassword} 
+        />
+
+      
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
           <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Tutorials')}>
             <Text style={styles.btntext}>Login</Text>
