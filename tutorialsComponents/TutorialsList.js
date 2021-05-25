@@ -13,11 +13,17 @@
 import React , { useState , useEffect }  from 'react';
 import { StatusBar, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import  Video from "react-native-video";
-import SelectBox from 'react-native-multi-selectbox';
+
 import axios from 'axios';
 import { Button, SearchBar  } from 'react-native-elements';
-import { xorBy } from 'lodash';
+
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import SelectBox from 'react-native-multi-selectbox';
+import { xorBy } from 'lodash';
+import AuthenticationWebService from '../tutorialsWebservices/AuthenticationWebService';
+
+
 
 const {
   getTopRatedForTags,
@@ -26,7 +32,7 @@ const {
 
 
  
- const TutorialsList = () => {
+ const TutorialsList = ({ navigation }) => {
   
     //each video in FlatList
     const Item = ({ item }) => (
@@ -59,7 +65,8 @@ const {
       <Item item={item} />
     );
   
-    const [selectedTags, setSelectedTags] = useState([]);
+    const [selectedTags, setselectedTags] = useState([])
+
     const [selectedTag, setSelectedTag] = useState({})
     
 
@@ -73,23 +80,23 @@ const {
  
     const [words, setWords] = useState('');
  
+    const logout = () => {
+      AuthenticationWebService.logout();
+      navigation.navigate('Login');
 
+    }
     const onMultiChange = (selectedTags) => {
      
-      return (item) => setSelectedTags(xorBy(selectedTags, [item], 'id'))
+      return (item) => setselectedTags(xorBy(selectedTags, [item], 'id'))
+
     }
   
-   
-
-    const onSelectionsChange = (selectedTags) => {
-   
-     setSelectedTags(selectedTags);
-    }
 
     //filter videos according tags selected
     const handleFilterByTags = () => {
         // selectedTags is array of { label, value } and I need only array of string
         let tags =  selectedTags.map(s => s.id);
+        
         if(tags.length>0){
            let listVideos = videoList;
            setVideoListFiltered(getTopRatedForTags(listVideos,tags));
@@ -106,7 +113,7 @@ const {
         let listVideos = videoList;
         
         setVideoListFiltered(searchForTutorials(listVideos,userwords));   
-        setSelectedTags([]);
+
         setWords(wordstr);
     }
  
@@ -128,81 +135,89 @@ const {
         setUniqueTags(uniqueTags);
         setUniqueMultipleTags(uniqueMultipleTags);
         setWords('');
-        setSelectedTags([]);
+        
     };
  
  
  
     useEffect( () =>{
       uponload();
-    },[]);
+    },[videoList]);
  
     return (
-         <View>
+         <View>   
             
-           <View>
-   
+            <Icon
+              name="log-out-outline"
+              size={50}
+              color="grey"
+              label="Logout"
+              onPress={logout}
+            />
+            <View>
             <SearchBar
-              placeholder="Enter key words to filter: teacher, tittle, tags"
+              placeholder="Enter teacher, tittle, tags"
               onChangeText={e => handleFilterByKeyWords(e)}
               value={words}
               showLoading={true}
-              
             />
             
- 
-           </View>
-           <View style={styles.separator}>     
-           
-           <SelectBox
-            label="Get Top Rated For Tags"
-            options={uniqueMultipleTags}
-            selectedValues={selectedTags}
-            onMultiSelect={onMultiChange()}
-            onTapClose={onMultiChange()}
-            isMulti
-          />
-
-      
-           
-       
-            <Button style={styles.input}
-                 title="Get Top Rated For Tags"
-                 onPress={handleFilterByTags}
-                 
-             />
-          </View>
-           <View  style={styles.separator}>
-           
+                  
               
-            <Button style={styles.btntxt}
-                 title="Reload complete List"
-                 onPress={uponload}
-                 icon={
-                    <Icon
-                      name="reload"
-                      size={15}
-                      color="grey"
-                    />
-                  }
-                 
-             />
             
-            <FlatList
-                 data={videoListFiltered}
-                 renderItem={renderItem}
-                 keyExtractor={item => item.id}
-                 numColumns={1}
-                 ItemSeparatorComponent={() => { return (<View style={styles.separator} />) }}
-                 
-             />
+           </View>
 
-        </View>  
+
+            <View style={styles.separator}>     
+           
+              <SelectBox
+                label="Get Top Rated For Tags"
+                options={uniqueMultipleTags}
+                selectedValues={selectedTags}
+                onMultiSelect={onMultiChange()}
+                onTapClose={onMultiChange()}
+                isMulti
+              />
+
+              <Button style={styles.input}
+                  title="Get Top Rated For Tags"
+                  onPress={handleFilterByTags}
+              />
+
+          </View>
+          
+
+            <View  style={styles.separator}>  
+              <Button style={styles.btntxt}
+                  title="Reload complete List"
+                  onPress={uponload}
+                  icon={
+                      <Icon
+                        name="reload"
+                        size={15}
+                        color="grey"
+                      />
+                  }
+              />
+            
+              <FlatList
+                  data={videoListFiltered}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  numColumns={1}
+                  ItemSeparatorComponent={
+                    () => { return (<View style={styles.separator} />) }
+                  }
+              />
+
+          </View>  
+         
          </View>
         
         
- 
     );
+ 
+ 
   };
   
   const styles = StyleSheet.create({

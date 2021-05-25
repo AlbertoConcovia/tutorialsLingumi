@@ -2,13 +2,28 @@ import React , { useState , useEffect }  from 'react';
 import { StyleSheet, Text, View, Dimensions, TextInput, Button, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
-
+import AuthenticationWebService from '../tutorialsWebservices/AuthenticationWebService';
 
 const Login = ({ navigation }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [authenticated, setAuthenticated] = useState(false);
+    const [errormessage, setErrorMessage] = useState('');
+    const submitLogin = () => {
 
+      let loginok = AuthenticationWebService.login(username,password);
+      
+      if(loginok){
+        setErrorMessage('') 
+        setAuthenticated(loginok);
+        navigation.navigate('Tutorials');
+      }else{
+        setErrorMessage('Bad Credentials')
+      }
+
+      
+    }
     return (
 
       <View style={styles.container}>
@@ -19,6 +34,7 @@ const Login = ({ navigation }) => {
         <Text style={styles.welcome}>Welcome to Lingumi Tutorials</Text>
         <Text style={styles.logintext}>Please Login to watch your videos!</Text>
 
+        <Text> {errormessage} </Text>
         <Input
           placeholder='enter email'
           leftIcon={
@@ -48,7 +64,7 @@ const Login = ({ navigation }) => {
 
       
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
-          <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Tutorials')}>
+          <TouchableOpacity style={styles.btn} onPress={submitLogin}>
             <Text style={styles.btntext}>Login</Text>
           </TouchableOpacity>
         
