@@ -1,7 +1,6 @@
 /**
  * @aconcovia
  * Bussiness logic for tutorialsLingumi functionalities
- * 
  * @format
  */
  
