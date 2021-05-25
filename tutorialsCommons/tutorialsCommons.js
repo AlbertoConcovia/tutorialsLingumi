@@ -4,7 +4,7 @@ import  Video from "react-native-video";
 
 //each video in FlatList
  const Item = ({ item }) => (
-  <TouchableOpacity onPress={() => alert('touch the video :)')} style={{width:350,height:300,backgroundColor: 'white'}}>
+  <TouchableOpacity  style={{width:350,height:300,backgroundColor: 'white'}}>
      <View>
         <Text>{ item.videoTitle }</Text>
         <Text>Categories: { item.tags.toString() }</Text>

@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
       
       if(loginok){
         setErrorMessage('') 
-        setAuthenticated(loginok);
+       
         navigation.navigate('Tutorials');
       }else{
         setErrorMessage('Bad Credentials')

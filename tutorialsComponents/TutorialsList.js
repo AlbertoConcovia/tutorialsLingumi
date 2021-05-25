@@ -21,6 +21,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SelectBox from 'react-native-multi-selectbox'
 import { xorBy } from 'lodash';
 
+import AuthenticationWebService from '../tutorialsWebservices/AuthenticationWebService';
+
+
 
 
 const {
@@ -29,9 +32,6 @@ const {
 } = require("../tutorialsCore/TutorialService");
 
 
-const {
-  logout
-} = require("../tutorialsCommons/authenticationCommons");
  
 const {
   Item,
@@ -60,6 +60,7 @@ const TutorialsList = ({ navigation }) => {
     const uponload = async () => {
         
       setLoading(true);
+      setselectedTags([]);
       const res = await axios.get("https://lingumi-take-home-test-server.herokuapp.com/videoTutorials");
       let listvideos= res.data;
       let listtags = listvideos.map(v => v.tags);
@@ -111,6 +112,12 @@ const TutorialsList = ({ navigation }) => {
       return (item) => setselectedTags(xorBy(selectedTags, [item], 'id'))
     }      
 
+    const logout = () => {
+      AuthenticationWebService.logout();
+      navigation.navigate('Login');
+  
+  }
+
     useEffect( () =>{
       uponload();      
     
@@ -125,6 +132,7 @@ const TutorialsList = ({ navigation }) => {
               <SearchBar placeholder="Enter teacher, tittle, tags"
                          onChangeText={e => handleFilterByKeyWords(e)}
                          value={words}
+                         lightTheme={true}
                          showLoading={true}/>
             </View>
 
@@ -180,7 +188,7 @@ const TutorialsList = ({ navigation }) => {
 const styles = StyleSheet.create({
   
   btntxt: {
-    backgroundColor: '#00FF00',
+    color: '#9e2dd6',
     padding: 10,
     width: '45%',
     justifyContent: 'center',
@@ -188,7 +196,7 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: '#00FF00',
+    backgroundColor: '#9e2dd6',
     padding: 10,
     width: '45%',
     justifyContent: 'center',
@@ -219,7 +227,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    backgroundColor:'#fff',
+    backgroundColor:'#9e2dd6',
     width:10,
     margin: 1,
     width: '90%',
