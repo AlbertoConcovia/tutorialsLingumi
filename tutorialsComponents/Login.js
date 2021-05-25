@@ -1,17 +1,21 @@
-import React , { useState , useEffect }  from 'react';
-import { StyleSheet, Text, View, Dimensions, TextInput, Button, TouchableOpacity, StatusBar } from 'react-native';
+import React , { useState }  from 'react';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import AuthenticationWebService from '../tutorialsWebservices/AuthenticationWebService';
+
+//Function to input credentials 
+// if user is ok, it redirects to tutorialsList that works a home after login
+// else it shows a message 'Bad Credentials'
 
 const Login = ({ navigation }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [authenticated, setAuthenticated] = useState(false);
     const [errormessage, setErrorMessage] = useState('');
-    const submitLogin = () => {
 
+    //submit the data and call the api to authenticate user and password
+    const submitLogin = () => {
       let loginok = AuthenticationWebService.login(username,password);
       
       if(loginok){
@@ -21,57 +25,36 @@ const Login = ({ navigation }) => {
       }else{
         setErrorMessage('Bad Credentials')
       }
-
-      
     }
+
+
     return (
 
       <View style={styles.container}>
-        <StatusBar 
-          backgroundColor="#03070E"
-          barStyle="light-content"
-        />
+        <StatusBar  backgroundColor="#03070E" barStyle="light-content"/>
+        
         <Text style={styles.welcome}>Welcome to Lingumi Tutorials</Text>
         <Text style={styles.logintext}>Please Login to watch your videos!</Text>
 
         <Text> {errormessage} </Text>
-        <Input
-          placeholder='enter email'
-          leftIcon={
-            <Icon
-              name='user'
-              size={15}
-              color='grey'
-            />
-          }
-          style={styles.input}
-          onChangeText={setUsername} 
-        />
+        <Input placeholder='enter email'
+               leftIcon={ <Icon name='user' size={15} color='grey' />}
+               style={styles.input}
+               onChangeText={setUsername} />
 
-        <Input
-          placeholder='enter password'
-          leftIcon={
-            <Icon
-              name='lock'
-              size={15}
-              color='grey'
-            />
-          }
-          style={styles.input}
-          secureTextEntry={true}
-          onChangeText={setPassword} 
-        />
+        <Input placeholder='enter password'
+               leftIcon={ <Icon name='lock' size={15} color='grey' />}
+               style={styles.input}
+               secureTextEntry={true}
+               onChangeText={setPassword} />
 
       
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
           <TouchableOpacity style={styles.btn} onPress={submitLogin}>
             <Text style={styles.btntext}>Login</Text>
           </TouchableOpacity>
-        
         </View>
-        <View style= {{margin: 5}}>
-       
-        </View>
+      
       </View>
     ); 
   }
