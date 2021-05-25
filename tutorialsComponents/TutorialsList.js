@@ -11,7 +11,7 @@
  */
 
 import React , { useState , useEffect }  from 'react';
-import { StatusBar, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import { ActivityIndicator, StatusBar, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import  Video from "react-native-video";
 
 import axios from 'axios';
@@ -79,6 +79,8 @@ const {
     const [uniqueMultipleTags, setUniqueMultipleTags] = useState([]);
  
     const [words, setWords] = useState('');
+
+    const [loading, setLoading] = useState(true);
  
     const logout = () => {
       AuthenticationWebService.logout();
@@ -94,7 +96,9 @@ const {
 
     //filter videos according tags selected
     const handleFilterByTags = () => {
+        
         // selectedTags is array of { label, value } and I need only array of string
+        setLoading(true);
         let tags =  selectedTags.map(s => s.id);
         
         if(tags.length>0){
@@ -103,18 +107,21 @@ const {
            setWords('');
            
         }
+        setLoading(false);
     }
  
 
     //match videos with the entered words
     const handleFilterByKeyWords = (wordstr) => {
         
+        setLoading(true);
         let userwords = wordstr.split(' ');
         let listVideos = videoList;
         
         setVideoListFiltered(searchForTutorials(listVideos,userwords));   
 
         setWords(wordstr);
+        setLoading(false);
     }
  
     /*call to Lingumi Service and save videos, videos to visualize 
@@ -122,6 +129,7 @@ const {
     */
     const uponload = async () => {
         
+        setLoading(true);
         const res = await axios.get("https://lingumi-take-home-test-server.herokuapp.com/videoTutorials");
         let listvideos= res.data;
         let listtags = listvideos.map(v => v.tags);
@@ -135,18 +143,21 @@ const {
         setUniqueTags(uniqueTags);
         setUniqueMultipleTags(uniqueMultipleTags);
         setWords('');
+        setLoading(false);
         
     };
  
  
  
     useEffect( () =>{
-      uponload();
+      uponload();      
+    
     },[videoList]);
  
     return (
-         <View>   
-            
+         <View>  
+           
+          
             <Icon
               name="log-out-outline"
               size={50}
@@ -154,6 +165,7 @@ const {
               label="Logout"
               onPress={logout}
             />
+            
             <View>
             <SearchBar
               placeholder="Enter teacher, tittle, tags"
@@ -200,6 +212,9 @@ const {
                   }
               />
             
+             
+              {loading ? <ActivityIndicator size="large" color="#00ff00" /> : 
+               
               <FlatList
                   data={videoListFiltered}
                   renderItem={renderItem}
@@ -209,6 +224,7 @@ const {
                     () => { return (<View style={styles.separator} />) }
                   }
               />
+              }
 
           </View>  
          
