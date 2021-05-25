@@ -8,6 +8,9 @@ This is a solution for Lingumi Take Home Task using React Native
 This application provides a simple login. The users and passwords are available in 
 /tutorialsResources/usersdb.json
 
+
+![image](https://user-images.githubusercontent.com/66374043/119574165-2f91ac80-bdad-11eb-843a-f8e12862aaf1.png)
+
 After login succesful, the home is a page with a complete list of videos by default. 
 Also there is an image to logout application
 
