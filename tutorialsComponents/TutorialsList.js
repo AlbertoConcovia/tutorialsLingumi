@@ -29,7 +29,7 @@ import AuthenticationWebService from '../tutorialsWebservices/AuthenticationWebS
 const {
   getTopRatedForTags,
   searchForTutorials,
-} = require("../tutorialsCore/TutorialService");
+} = require("../tutorialsCore/tutorialService");
 
 
  
